@@ -4,7 +4,82 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/CSS/style.css" />
     <title>JS Calendar</title>
   </head>
-  <body></body>
+  <body>
+    <header class="body__header">
+      <h1 class="header__h1--tittle">JS Calendar</h1>
+      <button class="header__button--create" id="headerCreateEvent">
+        Create event
+      </button>
+    </header>
+    <div class="body__div--separator"></div>
+    <main class="main__container">
+      <section class="main__section--calendarContainer">
+        <div class="section__div--switchMonth">
+          <button class="div__button--back" id="button-back--month">
+            Button back
+          </button>
+          <h5 class="div__h5--month">Month</h5>
+          <button class="div__button--next" id="button-next--month">
+            Next Month
+          </button>
+        </div>
+        <div class="section__div--gridMonth">
+          <!-- Days will implement using here! JS -->
+        </div>
+      </section>
+      <!-- MODAL SECTION START HERE-->
+      <section class="main__section--modal">
+        <div class="section__div--modalHeader">
+          <span class="div__span--title">New event</span>
+          <button class="div__button--closeForm" id="button-close--form">
+            Button Close
+          </button>
+        </div>
+        <form class="section__form--event">
+          <input type="text" placeholder="title" id="title-event" />
+          <label for="start-date"
+            >Start date
+            <input type="date" id="start-date" />
+          </label>
+          <!-- Select Optional -->
+          <select name="time" id="time">
+            <option value="5">5 minutes before</option>
+            <option value="10">10 minutes before</option>
+            <option value="15">15 minutes before</option>
+            <option value="30">30 minutes before</option>
+            <option value="60">1 hour before</option>
+          </select>
+          <textarea
+            placeholder="Type your description"
+            name=""
+            id="textarea-description"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <select name="meeting" id="Meeting">
+            <option value="meeting">Meeting</option>
+            <option value="personal">Personal</option>
+            <option value="study">Study</option>
+          </select>
+          <button
+            type="button"
+            class="form__button--cancel"
+            id="button-cancel--event"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="form__button--create"
+            id="button-create--event"
+          >
+            Create
+          </button>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>
