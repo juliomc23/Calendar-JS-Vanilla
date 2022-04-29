@@ -1,0 +1,49 @@
+.body__header{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.body__div--separator{
+    border: 1px solid black;
+}
+
+.main__container{
+    border:1px solid red;
+    padding: 1rem;
+}
+
+.main__section--calendarContainer{
+    border: 1px solid blue;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.section__div--switchMonth{
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.section__div--gridMonth{
+    border: 1px solid green;
+    height: 2rem;
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.div__section--days{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section__div--singleDay{
+    font-size: 1.5rem;
+}
