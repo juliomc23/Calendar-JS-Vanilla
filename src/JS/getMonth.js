@@ -16,9 +16,7 @@ const getMonth = (counter) => {
     "December",
   ];
   const date = new Date();
-  console.log(counter);
-  console.log(date.getMonth() + counter);
-  const initialDay = new Date(
+  let initialDay = new Date(
     date.getFullYear(),
     date.getMonth() + counter - 1
   ).getDay();
@@ -29,8 +27,11 @@ const getMonth = (counter) => {
   ).getDate();
 
   currentMonth.textContent = `${month[date.getMonth()]}`;
-  console.log(initialDay);
+  console.log(initialDay+'inicial');
+    let d = 1;
+
   for (let i = 1; i <= diasMeses + initialDay; i++) {
+      
     //Creamos elemento section para el dia
     const sectionDay = document.createElement("section");
     //Creamos div para meter el dia
@@ -41,11 +42,13 @@ const getMonth = (counter) => {
 
     sectionDay.classList.add("div__section--days");
     divDay.classList.add("section__div--singleDay");
-    console.log(i - initialDay);
-    debugger;
+    if(initialDay == 0){
+        initialDay = 7
+    }
     if (i >= initialDay) {
-      sectionDay.setAttribute("id", `${i - initialDay + 1}`);
-      divDay.textContent = i - initialDay + 1;
+        
+      sectionDay.setAttribute("id", `${d}`);
+      divDay.textContent = d;
 
       //darle clase e id a los botones y tab index con setattribute
 
@@ -61,10 +64,16 @@ const getMonth = (counter) => {
       if (sectionDay.getAttribute("id") === diasMeses.toString()) {
         i = diasMeses + initialDay;
       }
+
+      d++;
+    
     }
+    
 
     gridMonth.appendChild(sectionDay);
   }
+
+  console.log(d)
 };
 
 export { getMonth };

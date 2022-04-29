@@ -44,10 +44,25 @@ document.addEventListener("keydown", function (e) {
 });
 
 const buttonNextMonth = document.getElementById("button-next--month");
+const divMonth = document.getElementById('section__div--gridMonth');
+
 
 buttonNextMonth.addEventListener("click", switchMonth);
 
 function switchMonth() {
   counter++;
   getMonth(counter);
+
+  
+if(divMonth.hasChildNodes){
+
+    const childrens = document.querySelectorAll('.div__section--days');
+    Array.from(childrens).forEach(children =>{
+        divMonth.removeChild(children)
+    })
+
+    getMonth(counter);
+}
+
+
 }
