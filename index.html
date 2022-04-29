@@ -16,7 +16,7 @@
       </button>
     </header>
     <div class="body__div--separator"></div>
-    <main class="main__container">
+    <main class="main__container" id="main__container">
       <section class="main__section--calendarContainer">
         <div class="section__div--switchMonth">
           <button class="div__button--back" id="button-back--month">
@@ -53,7 +53,7 @@
         </div>
       </section>
       <!-- MODAL SECTION START HERE-->
-      <section class="main__section--modal" style="display: none;">
+      <section class="main__section--modal hide" id="mainSectionModal">
         <div class="section__div--modalHeader">
           <span class="div__span--title">New event</span>
           <button class="div__button--closeForm" id="button-close--form">
@@ -86,6 +86,7 @@
             <option value="personal">Personal</option>
             <option value="study">Study</option>
           </select>
+          <div class="form_div--buttonContainer">
           <button
             type="button"
             class="form__button--cancel"
@@ -100,8 +101,10 @@
           >
             Create
           </button>
+        </div>
         </form>
       </section>
+      <div class="main__div--blurModal hide" id ="blurModal"></div>
     </main>
   </body>
 </html>

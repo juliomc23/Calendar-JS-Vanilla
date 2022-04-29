@@ -1,0 +1,46 @@
+.main__section--modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    z-index: 10;
+}
+
+.section__div--modalHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.main__div--blurModal{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+}
+
+.hide{
+    display: none;
+}
+
+.section__form--event{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.form_div--buttonContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -11,6 +11,7 @@
 .main__container{
     border:1px solid red;
     padding: 1rem;
+    position: relative;
 }
 
 .main__section--calendarContainer{

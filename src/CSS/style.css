@@ -2,3 +2,7 @@
 
 @import url(./calendar.css);
 @import url(./modal.css);
+
+body{
+    position: relative;
+}

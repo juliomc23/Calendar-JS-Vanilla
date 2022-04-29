@@ -1,17 +1,13 @@
 const getMonth = ()=>{
     const gridMonth = document.getElementById('section__div--gridMonth');
-    const currentMonth = document.getElementById('currentMonth');
-    
-    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];
-    
+    const currentMonth = document.getElementById('currentMonth');    
+    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];    
     const date = new Date();
-    
-    currentMonth.textContent = `${month[date.getMonth()]}`;
-    
     const initialDay = new Date(date.getFullYear(), 3, 1).getDay();
-    
-    
     const diasMeses = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+
+    currentMonth.textContent = `${month[date.getMonth()]}`;  
+    
     
     
     
@@ -32,7 +28,11 @@ const getMonth = ()=>{
         if(i >= initialDay){
             sectionDay.setAttribute("id", `${i-initialDay+1}`);
             divDay.textContent = i-initialDay+1;
-    
+            
+            //darle clase e id a los botones y tab index con setattribute
+
+            //
+            
             sectionDay.appendChild(divDay);
             sectionDay.appendChild(buttonEvent);
     
