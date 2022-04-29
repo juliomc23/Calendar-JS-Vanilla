@@ -1,6 +1,4 @@
-const date = new Date();
+import { getMonth } from "./getMonth.js";
 
-const initialDay = new Date(date.getFullYear(), 3, 1);
-console.log(initialDay.toISOString());
-
+getMonth();
 
