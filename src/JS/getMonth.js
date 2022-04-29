@@ -22,6 +22,7 @@ const getMonth = ()=>{
         const divDay = document.createElement('div');
         //Crear button para crear eventos
         const buttonEvent = document.createElement('button');
+        buttonEvent.textContent = "+";
     
         sectionDay.classList.add('div__section--days');
         divDay.classList.add('section__div--singleDay');
@@ -35,9 +36,11 @@ const getMonth = ()=>{
             sectionDay.appendChild(divDay);
             sectionDay.appendChild(buttonEvent);
     
-    
-            console.log(sectionDay.getAttribute('id'))
             
+            if( divDay.textContent == date.getDate()){
+                divDay.classList.add('section__div--currentDay');
+            }
+
             if(sectionDay.getAttribute("id") === diasMeses.toString()){
                 i = diasMeses+initialDay
             }
