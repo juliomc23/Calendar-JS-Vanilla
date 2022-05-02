@@ -1,6 +1,11 @@
+let flag = 0;
+
 const getMonth = (counter) => {
   const gridMonth = document.getElementById("section__div--gridMonth");
   const currentMonth = document.getElementById("currentMonth");
+  let anexMonth = counter -1;
+  let day = 1;
+  let idButtonDay = "addDay";
   const month = [
     "January",
     "February",
@@ -16,6 +21,7 @@ const getMonth = (counter) => {
     "December",
   ];
   const date = new Date();
+  let currentYear = date.getFullYear();
   let initialDay = new Date(
     date.getFullYear(),
     date.getMonth() + counter - 1
@@ -26,9 +32,21 @@ const getMonth = (counter) => {
     0
   ).getDate();
 
-  currentMonth.textContent = `${month[date.getMonth()]}`;
-  console.log(initialDay+'inicial');
-    let d = 1;
+  let lastMonth;
+  if(counter == 1){
+    lastMonth = `${month[(date.getMonth()+anexMonth)%12]}`
+  }else{
+    lastMonth = currentMonth.textContent;
+  }
+  
+  if((date.getMonth()+anexMonth) < 0 && ((date.getMonth()+anexMonth)%12) != 0){
+    currentMonth.textContent = `${month[(((date.getMonth()+anexMonth)%12)+12)]}`;
+  }else{
+    currentMonth.textContent = `${month[(date.getMonth()+anexMonth)%12]}`;
+  }
+
+  //Function to change the year
+  getYear(currentMonth.textContent, lastMonth, date);
 
   for (let i = 1; i <= diasMeses + initialDay; i++) {
       
@@ -42,22 +60,24 @@ const getMonth = (counter) => {
 
     sectionDay.classList.add("div__section--days");
     divDay.classList.add("section__div--singleDay");
+
     if(initialDay == 0){
         initialDay = 7
     }
     if (i >= initialDay) {
         
-      sectionDay.setAttribute("id", `${d}`);
-      divDay.textContent = d;
-
-      //darle clase e id a los botones y tab index con setattribute
-
-      //
+      sectionDay.setAttribute("id", `${day}`);
+      divDay.textContent = day;
+      idButtonDay += day;
+      //Add the class, id and tabindex to each button plus day event
+      buttonEvent.setAttribute("class","buttonDay");
+      buttonEvent.setAttribute("tabindex", `${day}`);
+      buttonEvent.setAttribute("id", idButtonDay);
 
       sectionDay.appendChild(divDay);
       sectionDay.appendChild(buttonEvent);
 
-      if (divDay.textContent == date.getDate()) {
+      if (divDay.textContent == date.getDate() && currentMonth.textContent == month[date.getMonth()]) {
         divDay.classList.add("section__div--currentDay");
       }
 
@@ -65,7 +85,7 @@ const getMonth = (counter) => {
         i = diasMeses + initialDay;
       }
 
-      d++;
+      day++;
     
     }
     
@@ -73,7 +93,22 @@ const getMonth = (counter) => {
     gridMonth.appendChild(sectionDay);
   }
 
-  console.log(d)
+  console.log(day)
 };
+
+function getYear(current, last, date){
+  const year = document.getElementById("currentYear");
+
+  if(flag == 0){
+    year.textContent = date.getFullYear();
+    flag = 1;
+  }
+
+  if(current === "December" && last === "January"){
+    year.textContent = `${parseInt(year.textContent) - 1}`;
+  }else if(current === "January" && last === "December"){
+    year.textContent = `${parseInt(year.textContent) + 1}`;
+  }
+}
 
 export { getMonth };

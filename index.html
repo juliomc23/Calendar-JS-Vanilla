@@ -23,6 +23,7 @@
             Button back
           </button>
           <h5 class="div__h5--month" id="currentMonth">Month</h5>
+          <h5 class="div__h5--year" id="currentYear">Year</h5>
           <button class="div__button--next" id="button-next--month">
             Next Month
           </button>
@@ -61,31 +62,39 @@
           </button>
         </div>
         <form class="section__form--event">
-          <input type="text" placeholder="title" id="title-event" />
-          <label for="start-date"
+          <label for="title__Event" class="label__form">Title
+            <input type="text" placeholder="title" id="title-event" />
+          </label>
+          <label for="start-date" class="label__form"
             >Start date
-            <input type="date" id="start-date" />
+            <input type="datetime-local" id="start-date" />
           </label>
           <!-- Select Optional -->
-          <select name="time" id="time">
-            <option value="5">5 minutes before</option>
-            <option value="10">10 minutes before</option>
-            <option value="15">15 minutes before</option>
-            <option value="30">30 minutes before</option>
-            <option value="60">1 hour before</option>
-          </select>
-          <textarea
+          <label for="time" class="label__form">Time
+            <select name="time" id="time">
+              <option value="5">5 minutes before</option>
+              <option value="10">10 minutes before</option>
+              <option value="15">15 minutes before</option>
+              <option value="30">30 minutes before</option>
+              <option value="60">1 hour before</option>
+            </select>
+          </label>
+          <label for="description" class="label__form">Description
+            <textarea
             placeholder="Type your description"
             name=""
             id="textarea-description"
             cols="30"
             rows="10"
-          ></textarea>
-          <select name="meeting" id="Meeting">
-            <option value="meeting">Meeting</option>
-            <option value="personal">Personal</option>
-            <option value="study">Study</option>
-          </select>
+            ></textarea>
+          </label>
+          <label for="meeting" class="label__form">Event Type
+            <select name="meeting" id="Meeting">
+              <option value="meeting">Meeting</option>
+              <option value="personal">Personal</option>
+              <option value="study">Study</option>
+            </select>
+          </label>
           <div class="form_div--buttonContainer">
           <button
             type="button"

@@ -1,33 +1,31 @@
 import { getMonth } from "./getMonth.js";
+import { saveData,clearData } from "./saveData.js"
 let counter = 1;
 
 getMonth(counter);
 
+const overlay = document.getElementById("blurModal");
+const buttonNextMonth = document.getElementById("button-next--month");
+const buttonBackMonth = document.getElementById("button-back--month");
+const divMonth = document.getElementById('section__div--gridMonth');
+const form = document.getElementById("mainSectionModal");
+const saveDataButton = document.getElementById("button-create--event");
+const cancelDataButton = document.getElementById("button-cancel--event");
+
+overlay.addEventListener("click", closeModal);
+buttonNextMonth.addEventListener("click", switchMonth);
+buttonBackMonth.addEventListener("click", switchMonthBack);
+
+//Listener to Open The model Form
 const buttonHeaderEvent = document
   .getElementById("headerCreateEvent")
   .addEventListener("click", createEvent);
+
+//Listener to close the modal Form
 const buttonCloseEvent = document
   .getElementById("button-close--form")
   .addEventListener("click", closeForm);
-const overlay = document.getElementById("blurModal");
 
-overlay.addEventListener("click", closeModal);
-
-const form = document.getElementById("mainSectionModal");
-
-function createEvent() {
-  form.classList.toggle("hide");
-  overlay.classList.toggle("hide");
-}
-
-function closeForm() {
-  form.classList.toggle("hide");
-}
-
-function closeModal() {
-  form.classList.toggle("hide");
-  overlay.classList.toggle("hide");
-}
 
 //CLOSE MODAL WITH ESCAPE KEYBOARD
 document.addEventListener("keydown", function (e) {
@@ -43,18 +41,30 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-const buttonNextMonth = document.getElementById("button-next--month");
-const divMonth = document.getElementById('section__div--gridMonth');
+//Listener to save the form DATA
+document.getElementById("button-create--event").addEventListener("click",saveDataEvent);
 
 
-buttonNextMonth.addEventListener("click", switchMonth);
+//FUNCTIONS
+function createEvent() {
+  form.classList.toggle("hide");
+  overlay.classList.toggle("hide");
+}
+
+function closeForm() {
+  form.classList.toggle("hide");
+}
+
+function closeModal() {
+  form.classList.toggle("hide");
+  overlay.classList.toggle("hide");
+}
 
 function switchMonth() {
   counter++;
-  getMonth(counter);
 
   
-if(divMonth.hasChildNodes){
+  if(divMonth.hasChildNodes){
 
     const childrens = document.querySelectorAll('.div__section--days');
     Array.from(childrens).forEach(children =>{
@@ -62,7 +72,23 @@ if(divMonth.hasChildNodes){
     })
 
     getMonth(counter);
+  }else{
+    getMonth(counter);
+  }
 }
 
+function switchMonthBack(){
+  counter--;
 
+  if(divMonth.hasChildNodes){
+
+    const childrens = document.querySelectorAll('.div__section--days');
+    Array.from(childrens).forEach(children =>{
+        divMonth.removeChild(children)
+    })
+
+    getMonth(counter);
+  }else{
+    getMonth(counter);
+  }
 }
