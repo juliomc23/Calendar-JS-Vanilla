@@ -1,68 +1,70 @@
-.body__header{
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-around;
+.body__header {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
 }
 
-.body__div--separator{
-    border: 1px solid black;
+.body__div--separator {
+  border: 1px solid black;
 }
 
-.main__container{
-    border:1px solid red;
-    padding: 1rem;
-    position: relative;
+.main__container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  border: 1px solid red;
+  padding: 1rem;
+  position: relative;
 }
 
-.main__section--calendarContainer{
-    border: 1px solid blue;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
+.main__section--calendarContainer {
+  border: 1px solid blue;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.section__div--switchMonth{
-    border: 1px solid green;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
+.section__div--switchMonth {
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
 }
 
-.section__div--weekDays{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.section__div--weekDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
-.div__span--Day{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.div__span--Day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.section__div--gridMonth{
-    border: 1px solid green;
-    background-color: antiquewhite;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+.section__div--gridMonth {
+  border: 1px solid green;
+  background-color: antiquewhite;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 
-.div__section--days{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.div__section--days {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.section__div--singleDay{
-    font-size: 1.5rem;
+.section__div--singleDay {
+  font-size: 1.5rem;
 }
 
-.section__div--currentDay{
-    border: 1px solid aqua;
-    border-radius: 25%;
-    color: aqua;    
-    padding: 0%;
-    font-size: 2rem;
+.section__div--currentDay {
+  border: 1px solid aqua;
+  border-radius: 25%;
+  color: aqua;
+  padding: 0%;
+  font-size: 2rem;
 }

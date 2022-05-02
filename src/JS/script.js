@@ -1,13 +1,14 @@
 import { getMonth } from "./getMonth.js";
-import { saveData,clearData } from "./saveData.js"
+import { saveData, clearData, getEventData } from "./saveData.js";
 let counter = 1;
 
 getMonth(counter);
+getEventData();
 
 const overlay = document.getElementById("blurModal");
 const buttonNextMonth = document.getElementById("button-next--month");
 const buttonBackMonth = document.getElementById("button-back--month");
-const divMonth = document.getElementById('section__div--gridMonth');
+const divMonth = document.getElementById("section__div--gridMonth");
 const form = document.getElementById("mainSectionModal");
 const saveDataButton = document.getElementById("button-create--event");
 const cancelDataButton = document.getElementById("button-cancel--event");
@@ -26,24 +27,23 @@ const buttonCloseEvent = document
   .getElementById("button-close--form")
   .addEventListener("click", closeForm);
 
-
 //CLOSE MODAL WITH ESCAPE KEYBOARD
 document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && overlay.classList.contains("hide"));
-  {
+  if (e.key === "Escape" && !overlay.classList.contains("hide")) {
     form.classList.add("hide");
     overlay.classList.add("hide");
   }
 
-  if (e.key === "Enter" && overlay.classList.contains("hide")) {
+  if (e.key === "Enter" && !overlay.classList.contains("hide")) {
     form.classList.remove("hide");
     overlay.classList.remove("hide");
   }
 });
 
 //Listener to save the form DATA
-document.getElementById("button-create--event").addEventListener("click",saveDataEvent);
-
+document
+  .getElementById("button-create--event")
+  .addEventListener("click", saveData);
 
 //FUNCTIONS
 function createEvent() {
@@ -63,32 +63,29 @@ function closeModal() {
 function switchMonth() {
   counter++;
 
-  
-  if(divMonth.hasChildNodes){
-
-    const childrens = document.querySelectorAll('.div__section--days');
-    Array.from(childrens).forEach(children =>{
-        divMonth.removeChild(children)
-    })
+  if (divMonth.hasChildNodes) {
+    const childrens = document.querySelectorAll(".div__section--days");
+    Array.from(childrens).forEach((children) => {
+      divMonth.removeChild(children);
+    });
 
     getMonth(counter);
-  }else{
+  } else {
     getMonth(counter);
   }
 }
 
-function switchMonthBack(){
+function switchMonthBack() {
   counter--;
 
-  if(divMonth.hasChildNodes){
-
-    const childrens = document.querySelectorAll('.div__section--days');
-    Array.from(childrens).forEach(children =>{
-        divMonth.removeChild(children)
-    })
+  if (divMonth.hasChildNodes) {
+    const childrens = document.querySelectorAll(".div__section--days");
+    Array.from(childrens).forEach((children) => {
+      divMonth.removeChild(children);
+    });
 
     getMonth(counter);
-  }else{
+  } else {
     getMonth(counter);
   }
 }
