@@ -29,20 +29,20 @@ const buttonCloseEvent = document
 
 //CLOSE MODAL WITH ESCAPE KEYBOARD
 document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && overlay.classList.contains("hide"));
+  if (e.key === "Escape" && !overlay.classList.contains("hide"))
   {
     form.classList.add("hide");
     overlay.classList.add("hide");
   }
 
-  if (e.key === "Enter" && overlay.classList.contains("hide")) {
+  if (e.key === "Enter" && !overlay.classList.contains("hide")) {
     form.classList.remove("hide");
     overlay.classList.remove("hide");
   }
 });
 
 //Listener to save the form DATA
-document.getElementById("button-create--event").addEventListener("click",saveDataEvent);
+document.getElementById("button-create--event").addEventListener("click",saveData);
 
 
 //FUNCTIONS

@@ -1,8 +1,8 @@
-let titleEvent = document.getElementById("title-event").value;
-let startDate = document.getElementById("start-date").value;
-let timeRemindEvent = document.getElementById("time").value;
-let description = document.getElementById("textarea-description").value;
-let typeEvent = document.getElementById("Meeting").value;
+let titleEvent = document.getElementById("title-event");
+let startDate = document.getElementById("start-date");
+let timeRemindEvent = document.getElementById("time");
+let description = document.getElementById("textarea-description");
+let typeEvent = document.getElementById("Meeting");
 
 function saveData(){
     
