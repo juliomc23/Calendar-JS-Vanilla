@@ -21,15 +21,26 @@ function saveData() {
     },
     timeRemindEvent: timeRemindEvent.value,
     description: description.value,
-    typeEvent: typeEvent.value,
+    typeEvent: typeEvent.value
   };
   arrData.push(objData);
   localStorage.setItem("calendar_events", JSON.stringify(arrData));
+  getEventData();
 }
 
 function getEventData() {
   let events = JSON.parse(localStorage.getItem("calendar_events"));
-  if (localStorage.getItem("calendar_events") == null) {
+  let days = document.querySelector(".section__div--currentDay");
+  const date = new Date();
+
+console.log(arrData)
+if(arrData != null){
+  const found = arrData.find(element => element.date == date.getDate());
+    console.log(found)
+}
+
+
+  if (localStorage.getItem("calendar_events") != null && (days.textContent ==  date.getDate())) {
     events.forEach((element) => {
       let eventArticle = document.createElement("article");
       let eventTitle = element.title;
@@ -73,6 +84,10 @@ function getEventData() {
       asideEvents.appendChild(eventArticle);
       console.log(element);
     });
+  }else{
+    let eventInfo = document.createElement("p");  
+    eventInfo.textContent = "No hay Eventos";
+    asideEvents.appendChild(eventInfo);
   }
 }
 
