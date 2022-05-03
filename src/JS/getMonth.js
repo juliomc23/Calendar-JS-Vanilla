@@ -6,6 +6,8 @@ const getMonth = (counter) => {
   const currentMonth = document.getElementById("currentMonth");
   let anexMonth = counter -1;
   let day = 1;
+  let arrayHours = [];
+  let monthEvents;
   let idButtonDay = "addDay";
   const month = [
     "January",
@@ -42,8 +44,12 @@ const getMonth = (counter) => {
   
   if((date.getMonth()+anexMonth) < 0 && ((date.getMonth()+anexMonth)%12) != 0){
     currentMonth.textContent = `${month[(((date.getMonth()+anexMonth)%12)+12)]}`;
+    monthEvents = (((date.getMonth()+anexMonth)%12)+12);
+    arrayHours = [];
   }else{
     currentMonth.textContent = `${month[(date.getMonth()+anexMonth)%12]}`;
+    monthEvents = (date.getMonth()+anexMonth)%12;
+    arrayHours = [];
   }
 
   //Function to change the year
@@ -93,13 +99,12 @@ const getMonth = (counter) => {
 
     gridMonth.appendChild(sectionDay);
   }
-
-  console.log(day)
+  addEventDay(monthEvents, arrayHours);
 };
 
 function getYear(current, last, date){
   const year = document.getElementById("currentYear");
-
+  
   if(flag == 0){
     year.textContent = date.getFullYear();
     flag = 1;

@@ -7,7 +7,7 @@ let asideEvents = document.getElementById("aside-events");
 const asidePempty = document.getElementById('aside-p-empty')
 const form = document.getElementById("mainSectionModal");
 const overlay = document.getElementById("blurModal");
-
+let arrayHours = [];
 
 let arrData = [];
 
@@ -46,8 +46,8 @@ function saveData() {
 }
 
 
-function addEventDay() {
-
+function addEventDay(month, array) {
+  arrayHours = array;
   const date = new Date();
 
   //we get localStorage item
@@ -59,9 +59,8 @@ function addEventDay() {
     events.forEach(eventsLocal => { //recorremos el localStorage con este bucle
 
 
-
-      if (parseInt(eventsLocal.startDate.date.split('-')[1]) == date.getMonth() + 1) { //comprobamos si el mes del evento que está en el local es igual al mes actual
-
+      
+      if (parseInt(eventsLocal.startDate.date.split('-')[1]) == month + 1) { //comprobamos si el mes del evento que está en el local es igual al mes actual
         const daySection = document.getElementById(`${parseInt(eventsLocal.startDate.date.split('-')[2])}`);  //obtenemos el dia del evento
 
 
@@ -81,40 +80,23 @@ function addEventDay() {
               span.setAttribute('class', 'section__span--span');
               span.textContent = `${eventsLocal.title} - ${eventsLocal.startDate.time}`;
               divEvents.appendChild(span);
+              arrayHours.push(eventsLocal.startDate.time);
             }
           }else{
-
-            const daysSpan = daySection.querySelectorAll('.section__div--span')
-
-            daysSpan.forEach(span => {
-              console.log(span.textContent.split('-')[1])
-            })
-            
-            const divEvents = document.createElement('div');
-            divEvents.setAttribute('class', 'section__div--span');
-            daySection.appendChild(divEvents);
-
-            
-
-            if(divEvents.querySelectorAll('.section__span--span').length == 0){
-              const span = document.createElement('span');
-              span.setAttribute('class', 'section__span--span');
-              span.textContent = `${eventsLocal.title} - ${eventsLocal.startDate.time}`;
-              divEvents.appendChild(span);
+            for(let i = 0; i < events.length; i++){
+              if(!arrayHours.includes(events[i].startDate.time) && (daySection.getAttribute("id") == parseInt(events[i].startDate.date.split("-")[2]))){
+                let divEvents = daySection.querySelector(".section__div--span");
+                const span = document.createElement('span');
+                span.textContent = `${events[i].title} - ${events[i].startDate.time}`;
+                divEvents.appendChild(span);
+                arrayHours.push(events[i].startDate.time);
+              }
             }
           }
         }
-
-
-
-
       }
     })
   }
-
-
-
-
   //we get day's div
 
 }
@@ -122,21 +104,6 @@ function addEventDay() {
 function orderLocal(arrData) {
   arrData.sort((a, b) => new Date(a.startDate.date).getTime() - new Date(b.startDate.date).getTime());
 }
-
-
-// function getDay(){
-//   let dayNumber;
-//   if(arrData.length != 0){
-
-//     arrData.find(element => {
-//       dayNumber = parseInt (element.startDate.date.split('-')[2])
-
-//     });
-
-//     return dayNumber
-//   }
-// }
-
 
 
 function getEventData() {
@@ -159,8 +126,6 @@ function getEventData() {
 
 
     }
-
-    // asidePempty.classList.toggle('hide');
 
     events.forEach((element) => {
 
@@ -233,9 +198,9 @@ function getEventData() {
 function clearData() {
   titleEvent.value = "";
   startDate.value = "";
-  timeRemindEvent.value = "";
+  timeRemindEvent.value = "5";
   description.value = "";
-  typeEvent.value = "";
+  typeEvent.value = "meeting";
 }
 
 export { saveData, clearData, getEventData, addEventDay };

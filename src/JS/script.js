@@ -46,6 +46,9 @@ document
   .getElementById("button-create--event")
   .addEventListener("click", saveData);
 
+//Clear form
+document.getElementById("button-cancel--event").addEventListener("click", clearData);
+
 //FUNCTIONS
 function createEvent() {
   form.classList.toggle("hide");
@@ -54,6 +57,7 @@ function createEvent() {
 
 function closeForm() {
   form.classList.toggle("hide");
+  overlay.classList.toggle("hide");
 }
 
 function closeModal() {
