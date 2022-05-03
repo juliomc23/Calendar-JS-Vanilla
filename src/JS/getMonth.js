@@ -1,3 +1,4 @@
+import {addEventDay} from './saveData.js';
 let flag = 0;
 
 const getMonth = (counter) => {
