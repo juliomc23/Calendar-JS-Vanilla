@@ -16,7 +16,16 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: white;
+    height: 4rem;
+}
+
+.div__button--closeForm{
+    height: 2.75rem;
+    border: 1px solid black;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .label__form{
@@ -28,6 +37,14 @@
     margin-right: 4rem;
 }
 
+.form__input--modal{
+    height: 2.75rem;
+    outline: none;
+}
+
+.form__input--modal:hover, .label__textarea--modal:hover {
+    border: 1px solid black;
+}
 
 .main__div--blurModal{
     position: absolute;
@@ -49,10 +66,20 @@
     flex-direction: column;
     background-color: white;
     width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .form_div--buttonContainer{
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.form__button--create, .form__button--cancel{
+    height: 2.75rem;
+    border: 1px solid black;
+    cursor: pointer;
+    font-weight: bold;
+    width: 7rem;
 }

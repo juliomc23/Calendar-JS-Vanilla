@@ -87,6 +87,7 @@ function addEventDay(month, array) {
               if(!arrayHours.includes(events[i].startDate.time) && (daySection.getAttribute("id") == parseInt(events[i].startDate.date.split("-")[2]))){
                 let divEvents = daySection.querySelector(".section__div--span");
                 const span = document.createElement('span');
+                span.setAttribute('class', 'section__span--span');
                 span.textContent = `${events[i].title} - ${events[i].startDate.time}`;
                 divEvents.appendChild(span);
                 arrayHours.push(events[i].startDate.time);
