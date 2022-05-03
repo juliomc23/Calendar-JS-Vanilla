@@ -1,9 +1,10 @@
 import { getMonth } from "./getMonth.js";
-import { saveData, clearData, getEventData } from "./saveData.js";
+import { saveData, clearData, getEventData, addEventDay } from "./saveData.js";
 let counter = 1;
 
 getMonth(counter);
 getEventData();
+addEventDay();
 
 const overlay = document.getElementById("blurModal");
 const buttonNextMonth = document.getElementById("button-next--month");
