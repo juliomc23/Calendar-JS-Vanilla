@@ -26,9 +26,8 @@ function saveData() {
     },
     timeRemindEvent: timeRemindEvent.value,
     description: description.value,
-    typeEvent: typeEvent.value
+    typeEvent: typeEvent.value,
   };
-
   arrData.push(objData);
   localStorage.setItem("calendar_events", JSON.stringify(arrData));
   
@@ -41,7 +40,7 @@ function saveData() {
   
 }
 
-function getDay(){
+/*function getDay(){
   let dayNumber;
   if(arrData.length != 0){
 
@@ -52,7 +51,7 @@ function getDay(){
   
     return dayNumber
   }
-}
+}*/
 
 
 
