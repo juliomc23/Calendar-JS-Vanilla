@@ -71,8 +71,10 @@
 }
 
 .section__div--gridMonth {
-  border: 1px solid #CCC;
+  /* border: 1px solid #CCC; */
   display: grid;
+  row-gap:0.1rem;
+  column-gap: 0.1rem;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
 }

@@ -1,5 +1,6 @@
 import {addEventDay} from './saveData.js';
 let flag = 0;
+let door = 0;
 
 const getMonth = (counter) => {
   const gridMonth = document.getElementById("section__div--gridMonth");
@@ -8,6 +9,7 @@ const getMonth = (counter) => {
   let day = 1;
   let arrayHours = [];
   let monthEvents;
+  door = 0;
   let idButtonDay = "addDay";
   const month = [
     "January",
@@ -55,7 +57,7 @@ const getMonth = (counter) => {
   //Function to change the year
   getYear(currentMonth.textContent, lastMonth, date);
 
-  for (let i = 1; i <= diasMeses + initialDay; i++) {
+  for (let i = 1; i <= 42; i++) {//diasMeses + initialDay
       
     //Creamos elemento section para el dia
     const sectionDay = document.createElement("section");
@@ -71,7 +73,7 @@ const getMonth = (counter) => {
     if(initialDay == 0){
         initialDay = 7
     }
-    if (i >= initialDay) {
+    if (i >= initialDay && (door == 0)) {
         
       sectionDay.setAttribute("id", `${day}`);
       divDay.textContent = day;
@@ -89,15 +91,17 @@ const getMonth = (counter) => {
       }
 
       if (sectionDay.getAttribute("id") === diasMeses.toString()) {
-        i = diasMeses + initialDay;
+        door = 1;
       }
 
       day++;
     
     }
     
-
     gridMonth.appendChild(sectionDay);
+    if(i >= diasMeses+initialDay-1 && i%7==0){
+      i = 43;
+    }
   }
   addEventDay(monthEvents, arrayHours);
 };
