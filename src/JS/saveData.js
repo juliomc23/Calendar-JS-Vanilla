@@ -14,7 +14,6 @@ let months;
 let arrayHours = [];
 
 let arrData = [];
-// console.log(monthEvents);
 if (localStorage.length !== 0) {
   arrData = JSON.parse(localStorage.getItem("calendar_events"));
 
@@ -52,25 +51,16 @@ function saveData() {
 function addEventDay(monthEvents, array) {
   months = monthEvents;
   arrayHours = array;
-  console.log("horas "+ arrayHours);
-  const date = new Date();
 
   //we get localStorage item
   const events = JSON.parse(localStorage.getItem("calendar_events"));
-  console.log(events);
   //loop localStorage
   if (events != null) { //if localStorage is not empty
 
     events.forEach(eventsLocal => { //recorremos el localStorage con este bucle
 
-      console.log(parseInt(eventsLocal.startDate.date.split('-')[1]));
-      console.log(parseInt(months+1));
-      console.log(year.textContent);
-      console.log(year.textContent == eventsLocal.startDate.date.split('-')[0]);
-
       if ((parseInt(eventsLocal.startDate.date.split('-')[1]) == months + 1) && (year.textContent == eventsLocal.startDate.date.split('-')[0])) { //comprobamos si el mes del evento que está en el local es igual al mes actual
         const daySection = document.getElementById(`${parseInt(eventsLocal.startDate.date.split('-')[2])}`);  //obtenemos el dia del evento
-        console.log("horas "+ arrayHours);
 
 
         if (daySection.hasChildNodes()) {  //si el daySection tiene hijos hacemos una comprobacion de daySection
@@ -80,11 +70,9 @@ function addEventDay(monthEvents, array) {
             const divEvents = document.createElement('div');
             divEvents.setAttribute('class', 'section__div--span');
             // daySection.appendChild(divEvents);
-            console.log("creando div para span");
             
 
             if(divEvents.querySelectorAll('.section__span--span').length == 0){
-              console.log("creando span para evento");
               const span = document.createElement('span');
               span.setAttribute('class', 'section__span--span');
               span.textContent = `${eventsLocal.title} - ${eventsLocal.startDate.time}`;
@@ -93,7 +81,6 @@ function addEventDay(monthEvents, array) {
               arrayHours.push(eventsLocal.startDate.time);
             }
           }else{
-            console.log("ya tiene eventos");
             for(let i = 0; i < events.length; i++){
               if(!arrayHours.includes(events[i].startDate.time) && (daySection.getAttribute("id") == parseInt(events[i].startDate.date.split("-")[2]))){
                 let divEvents = daySection.querySelector(".section__div--span");

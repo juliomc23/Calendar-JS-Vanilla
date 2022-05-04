@@ -120,5 +120,4 @@ function getYear(current, last, date){
     year.textContent = `${parseInt(year.textContent) + 1}`;
   }
 }
-console.log(monthEvents);
 export { getMonth , monthEvents };
