@@ -4,7 +4,7 @@ let counter = 1;
 
 getMonth(counter);
 getEventData();
-addEventDay();
+// addEventDay();
 
 const overlay = document.getElementById("blurModal");
 const buttonNextMonth = document.getElementById("button-next--month");

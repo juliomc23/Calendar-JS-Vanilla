@@ -27,10 +27,51 @@
   flex-direction: column;
   align-items: flex-start;
   padding-top: 3rem;
+  border: 1px solid #CCC;
+  padding-left: 2rem;
+  width: 90%;
+  height: 93%;
+  overflow-y: scroll;
 }
 
+/***************scroll bar css************/
+.main__aside--aside-events::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.main__aside--aside-events::-webkit-scrollbar:vertical {
+  width: 0.5rem;
+}
+
+.main__aside--aside-events::-webkit-scrollbar-button:increment,
+.main__aside--aside-events::-webkit-scrollbar-button {
+  display: none;
+}
+
+.main__aside--aside-events::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.main__aside--aside-events::-webkit-scrollbar-thumb {
+  background-color: #7795af;
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
+}
+
+.main__aside--aside-events::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+
+/*****************************************/
+
 .aside__article--Event{
-  border-bottom: 1px solid #CCC;
+  /* border-bottom: 1px solid #CCC; */
+  width: 80%;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .main__section--calendarContainer {

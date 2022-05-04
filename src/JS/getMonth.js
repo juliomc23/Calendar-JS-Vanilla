@@ -1,14 +1,14 @@
 import {addEventDay} from './saveData.js';
 let flag = 0;
 let door = 0;
-
+let monthEvents = 0;
 const getMonth = (counter) => {
   const gridMonth = document.getElementById("section__div--gridMonth");
   const currentMonth = document.getElementById("currentMonth");
   let anexMonth = counter -1;
   let day = 1;
   let arrayHours = [];
-  let monthEvents;
+  // let monthEvents;
   door = 0;
   let idButtonDay = "addDay";
   const month = [
@@ -53,7 +53,7 @@ const getMonth = (counter) => {
     monthEvents = (date.getMonth()+anexMonth)%12;
     arrayHours = [];
   }
-
+  
   //Function to change the year
   getYear(currentMonth.textContent, lastMonth, date);
 
@@ -120,5 +120,5 @@ function getYear(current, last, date){
     year.textContent = `${parseInt(year.textContent) + 1}`;
   }
 }
-
-export { getMonth };
+console.log(monthEvents);
+export { getMonth , monthEvents };
