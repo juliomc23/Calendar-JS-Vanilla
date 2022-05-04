@@ -77,11 +77,12 @@ const getMonth = (counter) => {
         
       sectionDay.setAttribute("id", `${day}`);
       divDay.textContent = day;
-      idButtonDay += day;
+      idButtonDay = "addDay" + day;
       //Add the class, id and tabindex to each button plus day event
       buttonEvent.setAttribute("class","buttonDay");
       buttonEvent.setAttribute("tabindex", `${day}`);
       buttonEvent.setAttribute("id", idButtonDay);
+      buttonEvent.setAttribute("type", "button")
 
       sectionDay.appendChild(divDay);
       sectionDay.appendChild(buttonEvent);

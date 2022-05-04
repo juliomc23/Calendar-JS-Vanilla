@@ -1,5 +1,6 @@
 import { getMonth } from "./getMonth.js";
 import { saveData, clearData, getEventData, addEventDay } from "./saveData.js";
+import { createEventFromDay } from "./modalFromDay.js"
 let counter = 1;
 
 getMonth(counter);
@@ -13,6 +14,7 @@ const divMonth = document.getElementById("section__div--gridMonth");
 const form = document.getElementById("mainSectionModal");
 const saveDataButton = document.getElementById("button-create--event");
 const cancelDataButton = document.getElementById("button-cancel--event");
+const buttonDayListAddEvent = document.querySelectorAll(".buttonDay");
 
 overlay.addEventListener("click", closeModal);
 buttonNextMonth.addEventListener("click", switchMonth);
@@ -49,8 +51,18 @@ document
 //Clear form
 document.getElementById("button-cancel--event").addEventListener("click", clearData);
 
+//Listener for buttonAddDay to Open the modal and passing the corresponding date
+Array.from(buttonDayListAddEvent).forEach(element =>{
+  document.getElementById(element.getAttribute("id")).addEventListener("click",function(){
+    createEventFromDay(element)
+  })
+});
+
+
 //FUNCTIONS
 function createEvent() {
+  const startDate = document.querySelector("#start-date");
+  startDate.value = "";
   form.classList.toggle("hide");
   overlay.classList.toggle("hide");
 }
