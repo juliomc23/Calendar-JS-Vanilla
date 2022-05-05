@@ -75,6 +75,8 @@
 }
 
 .article__button--deleteEvent {
+  background-color: transparent;
+  border: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -185,6 +187,7 @@
   color: #323232c2;
   font-weight: 600;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .section__div--currentDay {
@@ -211,6 +214,49 @@
 
 
 .main__dialog--Event{
-  width: 20rem;
-  height: 20rem;
+  width: 35rem;
+  height: 15rem;
+  position: absolute;
+  top:30%;
+  left:10%;
+  overflow-y: scroll;
+}
+
+/*  */
+
+.main__dialog--Event::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.main__dialog--Event::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.main__dialog--Event::-webkit-scrollbar-button:increment,
+.main__dialog--Event::-webkit-scrollbar-button {
+  display: none;
+}
+
+.main__dialog--Event::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.main__dialog--Event::-webkit-scrollbar-thumb {
+  background-color: #7a549e;
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
+}
+
+.main__dialog--Event::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.buttonCloseDialog{
+  background-color: transparent;
+  border: 1px solid #7a549e;
+  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 2rem;
+  font-weight: bold;
 }

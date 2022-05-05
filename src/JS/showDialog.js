@@ -37,6 +37,7 @@ export function showDialogDayEvents(section){
                     article.appendChild(pDescription);
                     article.appendChild(pTypeEvent);     
                     buttonCloseDialog.setAttribute("id", "buttonCloseDialog"); 
+                    buttonCloseDialog.setAttribute("class", "buttonCloseDialog"); 
                     buttonCloseDialog.textContent="X";
                     dialog.prepend(buttonCloseDialog);
                     dialog.appendChild(article);
@@ -49,6 +50,7 @@ export function showDialogDayEvents(section){
             message.textContent = "No events to show";
             dialog.appendChild(message);    
             buttonCloseDialog.setAttribute("id", "buttonCloseDialog"); 
+            buttonCloseDialog.setAttribute("class", "buttonCloseDialog"); 
             buttonCloseDialog.textContent="X";
             dialog.setAttribute("open", "");
             dialog.prepend(buttonCloseDialog);
