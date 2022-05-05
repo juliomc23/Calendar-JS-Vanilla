@@ -1,18 +1,45 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* HEADER SECTION */
 .body__header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 1rem;
 }
 
-.header__button--create{
+.header__h1--tittle {
+  color: #323232;
+}
+.header__calendar--icon {
   height: 2.75rem;
-  border: 1px solid black;
+}
+.header__button--create {
+  background-color: #9d6ccb;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.266);
+  border: 1px solid rgb(175, 173, 173);
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 2.75rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  padding: 1rem;
   cursor: pointer;
-  font-weight: bold;
+}
+
+.header__button--create:hover {
+  font-weight: 600;
+  color: #9d6ccb;
+  background-color: #ffffff;
 }
 
 .body__div--separator {
-  border: 1px solid black;
+  border: 0.7px solid rgb(175, 173, 173);
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .main__container {
@@ -22,75 +49,76 @@
   position: relative;
 }
 
-.main__aside--aside-events{
+/*  ASIDE SECTION */
+.main__aside--aside-events {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 3rem;
-  border: 1px solid #CCC;
-  padding-left: 2rem;
+  background-color: #9d6ccb;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  padding: 1.5rem;
+}
+
+.aside__article--Event {
+  line-height: 0.8rem;
   width: 90%;
-  height: 93%;
-  overflow-y: scroll;
-}
-
-/***************scroll bar css************/
-.main__aside--aside-events::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
-
-.main__aside--aside-events::-webkit-scrollbar:vertical {
-  width: 0.5rem;
-}
-
-.main__aside--aside-events::-webkit-scrollbar-button:increment,
-.main__aside--aside-events::-webkit-scrollbar-button {
-  display: none;
-}
-
-.main__aside--aside-events::-webkit-scrollbar:horizontal {
-  height: 10px;
-}
-
-.main__aside--aside-events::-webkit-scrollbar-thumb {
-  background-color: #7795af;
-  border-radius: 20px;
-  border: 1px solid var(--primary-color);
-}
-
-.main__aside--aside-events::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-
-/*****************************************/
-
-.aside__article--Event{
-  /* border-bottom: 1px solid #CCC; */
-  width: 80%;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  padding-left: 0.5rem;
-  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  position: relative;
 }
 
+.article__button--deleteEvent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  height: 2.75rem;
+  stroke: #f3f3f3;
+}
+
+/* FINISH ASIDE SECTION */
+.section__div--weekDays {
+  font-size: 1.6rem;
+  color: #323232c2;
+  padding: 1.2rem;
+}
 .main__section--calendarContainer {
-  border-left: 1px solid #CCC;
+  border-left: 1px solid rgb(236, 231, 231);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.div__button--switchMonth{
+.div__h5--month,
+.div__h5--year {
+  font-size: 1.8rem;
+  color: #323232c2;
+}
+
+.div__button--switchMonth {
   height: 2.75rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  padding: 0.5em;
   cursor: pointer;
   font-weight: bold;
 }
 
+.div__button--switchMonth:hover {
+  background-color: rgb(240, 236, 236);
+  border-radius: 50%;
+}
+
 .section__div--switchMonth {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -107,14 +135,14 @@
 .div__span--Day {
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   font-weight: bold;
 }
 
 .section__div--gridMonth {
-  /* border: 1px solid #CCC; */
+  border: 1px solid #ccc;
   display: grid;
-  row-gap:0.1rem;
+  row-gap: 0.1rem;
   column-gap: 0.1rem;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
@@ -122,7 +150,7 @@
 
 .div__section--days {
   position: relative;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -131,15 +159,15 @@
   height: 7.5rem;
 }
 
-.div__section--days:hover .buttonDay{
+.div__section--days:hover .buttonDay {
   display: flex;
 }
 
-.buttonDay{
+.buttonDay {
   display: none;
   justify-content: center;
   align-items: center;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   border-radius: 100%;
   background-color: transparent;
   font-weight: bold;
@@ -152,24 +180,31 @@
 }
 
 .section__div--singleDay {
-  font-size: 1.5rem;
+  margin-top: 5px;
+  font-size: 1.8rem;
+  color: #323232c2;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .section__div--currentDay {
-  color: aqua;
-  border-bottom: 1px solid #CCC;
-  width: 50%;
   text-align: center;
+  font-size: 2.4rem;
+  color: #f3f3f3;
+  width: 20%;
+  background-color: #7a549e;
+  border-bottom: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 0.2rem;
 }
 
-.section__div--span{
+.section__div--span {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.section__span--span{
+.section__span--span {
   padding-left: 1rem;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
 }
