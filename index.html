@@ -5,28 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <script src="./src/JS/script.js" type="module"></script>
     <title>JS Calendar</title>
   </head>
   <body>
     <header class="body__header">
       <h1 class="header__h1--tittle">JS Calendar</h1>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="header__calendar--icon"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
       <button class="header__button--create" id="headerCreateEvent">
-        Create event
+        New event
       </button>
     </header>
     <div class="body__div--separator"></div>
     <main class="main__container" id="main__container">
+      <aside class="main__aside--aside-events" id="aside-events">
+        EVENTS
+
+        <p class="aside__p--empty aside__article--Event" id="aside-p-empty">
+          No events to show
+        </p>
+      </aside>
       <section class="main__section--calendarContainer">
         <div class="section__div--switchMonth">
-          <button class="div__button--back" id="button-back--month">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="div__button--switchMonth"
+            id="button-back--month"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          <!-- <button class="div__button--switchMonth" id="button-back--month">
             Button back
-          </button>
+          </button> -->
           <h5 class="div__h5--month" id="currentMonth">Month</h5>
           <h5 class="div__h5--year" id="currentYear">Year</h5>
-          <button class="div__button--next" id="button-next--month">
+          <!-- <button class="div__button--switchMonth" id="button-next--month">
             Next Month
-          </button>
+          </button> -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="div__button--switchMonth"
+            id="button-next--month"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </div>
         <div class="section__div--weekDays">
           <span class="div__span--Day">Monday</span>
@@ -38,10 +95,9 @@
           <span class="div__span--Day">Sunday</span>
         </div>
         <div class="section__div--gridMonth" id="section__div--gridMonth">
-
           <!-- Days will implement using here! JS -->
-          
-            <!--
+
+          <!--
               <section>
                 <div>
                 </div>
@@ -56,22 +112,49 @@
       <!-- MODAL SECTION START HERE-->
       <section class="main__section--modal hide" id="mainSectionModal">
         <div class="section__div--modalHeader">
-          <span class="div__span--title">New event</span>
-          <button class="div__button--closeForm" id="button-close--form">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="div__button--closeForm"
+            id="button-close--form"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          <!-- <button class="div__button--closeForm" id="button-close--form">
             Button Close
-          </button>
+          </button> -->
         </div>
+
         <form class="section__form--event">
-          <label for="title__Event" class="label__form">Title
-            <input type="text" placeholder="title" id="title-event" />
+          <label for="title__Event" class="label__form"
+            >Title
+            <input
+              type="text"
+              class="form__input--modal"
+              placeholder="title"
+              id="title-event"
+            />
           </label>
           <label for="start-date" class="label__form"
             >Start date
-            <input type="datetime-local" id="start-date" />
+            <input
+              type="datetime-local"
+              id="start-date"
+              class="form__input--modal"
+              value="date"
+            />
           </label>
           <!-- Select Optional -->
-          <label for="time" class="label__form">Time
-            <select name="time" id="time">
+          <label for="time" class="label__form"
+            >Time
+            <select name="time" id="time" class="form__input--modal">
               <option value="5">5 minutes before</option>
               <option value="10">10 minutes before</option>
               <option value="15">15 minutes before</option>
@@ -79,41 +162,45 @@
               <option value="60">1 hour before</option>
             </select>
           </label>
-          <label for="description" class="label__form">Description
+          <label for="description" class="label__form"
+            >Description
             <textarea
-            placeholder="Type your description"
-            name=""
-            id="textarea-description"
-            cols="30"
-            rows="10"
+              class="label__textarea--modal"
+              placeholder="Type your description"
+              name=""
+              id="textarea-description"
+              cols="30"
+              rows="10"
             ></textarea>
           </label>
-          <label for="meeting" class="label__form">Event Type
-            <select name="meeting" id="Meeting">
-              <option value="meeting">Meeting</option>
+          <label for="meeting" class="label__form"
+            >Event Type
+            <select name="meeting" id="Meeting" class="form__input--modal">
+              <option value="meeting" selected="selected">Meeting</option>
               <option value="personal">Personal</option>
               <option value="study">Study</option>
+              <option value="study">Others</option>
             </select>
           </label>
           <div class="form_div--buttonContainer">
-          <button
-            type="button"
-            class="form__button--cancel"
-            id="button-cancel--event"
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            class="form__button--create"
-            id="button-create--event"
-          >
-            Create
-          </button>
-        </div>
+            <button
+              type="button"
+              class="form__button--cancel"
+              id="button-cancel--event"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              class="form__button--create"
+              id="button-create--event"
+            >
+              Create
+            </button>
+          </div>
         </form>
       </section>
-      <div class="main__div--blurModal hide" id ="blurModal"></div>
+      <div class="main__div--blurModal hide" id="blurModal"></div>
     </main>
   </body>
 </html>

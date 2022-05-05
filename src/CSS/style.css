@@ -1,8 +1,9 @@
 @import url(./normalize.css);
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
 @import url(./calendar.css);
 @import url(./modal.css);
 
 body{
     position: relative;
+    font-family: 'Nunito Sans', sans-serif;
 }

@@ -1,10 +1,16 @@
+import {addEventDay} from './saveData.js';
 let flag = 0;
-
+let door = 0;
+let monthEvents = 0;
 const getMonth = (counter) => {
   const gridMonth = document.getElementById("section__div--gridMonth");
   const currentMonth = document.getElementById("currentMonth");
+  const currentYearCalendar = document.getElementById("currentYear");
   let anexMonth = counter -1;
   let day = 1;
+  let arrayHours = [];
+  // let monthEvents;
+  door = 0;
   let idButtonDay = "addDay";
   const month = [
     "January",
@@ -41,14 +47,18 @@ const getMonth = (counter) => {
   
   if((date.getMonth()+anexMonth) < 0 && ((date.getMonth()+anexMonth)%12) != 0){
     currentMonth.textContent = `${month[(((date.getMonth()+anexMonth)%12)+12)]}`;
+    monthEvents = (((date.getMonth()+anexMonth)%12)+12);
+    arrayHours = [];
   }else{
     currentMonth.textContent = `${month[(date.getMonth()+anexMonth)%12]}`;
+    monthEvents = (date.getMonth()+anexMonth)%12;
+    arrayHours = [];
   }
-
+  
   //Function to change the year
   getYear(currentMonth.textContent, lastMonth, date);
 
-  for (let i = 1; i <= diasMeses + initialDay; i++) {
+  for (let i = 1; i <= 42; i++) {//diasMeses + initialDay
       
     //Creamos elemento section para el dia
     const sectionDay = document.createElement("section");
@@ -64,41 +74,43 @@ const getMonth = (counter) => {
     if(initialDay == 0){
         initialDay = 7
     }
-    if (i >= initialDay) {
+    if (i >= initialDay && (door == 0)) {
         
       sectionDay.setAttribute("id", `${day}`);
       divDay.textContent = day;
-      idButtonDay += day;
+      idButtonDay = "addDay" + day;
       //Add the class, id and tabindex to each button plus day event
       buttonEvent.setAttribute("class","buttonDay");
       buttonEvent.setAttribute("tabindex", `${day}`);
       buttonEvent.setAttribute("id", idButtonDay);
+      buttonEvent.setAttribute("type", "button")
 
       sectionDay.appendChild(divDay);
       sectionDay.appendChild(buttonEvent);
 
-      if (divDay.textContent == date.getDate() && currentMonth.textContent == month[date.getMonth()]) {
+      if (divDay.textContent == date.getDate() && currentMonth.textContent == month[date.getMonth()] && currentYearCalendar.textContent == date.getFullYear()) {
         divDay.classList.add("section__div--currentDay");
       }
 
       if (sectionDay.getAttribute("id") === diasMeses.toString()) {
-        i = diasMeses + initialDay;
+        door = 1;
       }
 
       day++;
     
     }
     
-
     gridMonth.appendChild(sectionDay);
+    if(i >= diasMeses+initialDay-1 && i%7==0){
+      i = 43;
+    }
   }
-
-  console.log(day)
+  addEventDay(monthEvents, arrayHours);
 };
 
 function getYear(current, last, date){
   const year = document.getElementById("currentYear");
-
+  
   if(flag == 0){
     year.textContent = date.getFullYear();
     flag = 1;
@@ -110,5 +122,4 @@ function getYear(current, last, date){
     year.textContent = `${parseInt(year.textContent) + 1}`;
   }
 }
-
-export { getMonth };
+export { getMonth , monthEvents };
