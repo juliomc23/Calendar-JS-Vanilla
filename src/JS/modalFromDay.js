@@ -4,6 +4,7 @@ const dateInput = document.getElementById("start-date")
 
 function createEventFromDay(e){
     console.log(e);
+    console.log(document.getElementById("start-date"));
     const startDate = document.querySelector("#start-date");
     const date = new Date();
     const day = date.toISOString();
@@ -64,9 +65,6 @@ function createEventFromDay(e){
     const integerCurrentHour = parseInt(fecha.join(':').split('T')[1].split(':')[0])+2;
     const stringCurrentHour = integerCurrentHour.toString();
     startDate.value = `${newDate.join('-')}T${stringCurrentHour}:${stringCurrentMinutes}`;
-    console.log(startDate.value);
-    console.log(`${newDate.join('-')}T${stringCurrentHour}:${stringCurrentMinutes}`);
-    console.log(`${tabindexDay}/${actualMonth}/${actualYear}`);
     form.classList.remove("hide");
     overlay.classList.remove("hide");
     // dateInput.setAttribute("value", `${day}/${month}/${year}T00:00`)

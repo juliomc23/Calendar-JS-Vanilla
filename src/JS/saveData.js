@@ -13,9 +13,8 @@ const year = document.getElementById("currentYear");
 let months;
 let control = 0;
 let arrayHours = [];
-// let idEvent = 1;
+let daySection = "";
 let idEvent = 1;
-// console.log(JSON.parse(localStorage.getItem("calendar_events")).length);
 let arrData = [];
 
 if (localStorage.length !== 0) {
@@ -25,13 +24,10 @@ if (localStorage.length !== 0) {
 }
 
 function saveData() {
-  console.log(startDate.value);
   if(JSON.parse(localStorage.getItem("calendar_events")) != null){
     idEvent = JSON.parse(localStorage.getItem("calendar_events")).length+1;
-    //idEvent = JSON.parse(localStorage.getItem("calendar_events"));
-    console.log(idEvent)
+    arrData = JSON.parse(localStorage.getItem("calendar_events"));
   }
-  // let idEvent1 = 1;
   let timeSplit = startDate.value.split("T");
   let objData = {
     title: titleEvent.value,
@@ -44,25 +40,24 @@ function saveData() {
     typeEvent: typeEvent.value,
     id:idEvent,
   };
-  if(JSON.parse(localStorage.getItem("calendar_events")) == null || (JSON.parse(localStorage.getItem("calendar_events")) != null && JSON.parse(localStorage.getItem("calendar_events")).length == 0)){
+  if(JSON.parse(localStorage.getItem("calendar_events")) == null){
     arrData = [];
   }
-  // ////////////////////////////////////
-  // const daySection = document.getElementById(`${parseInt(element.startDate.date.split('-')[2])}`);
-  // ////////////////////////////////////
+  if((JSON.parse(localStorage.getItem("calendar_events")) != null && JSON.parse(localStorage.getItem("calendar_events")).length == 0)){
+    arrData = JSON.parse(localStorage.getItem("calendar_events"));
+  }
+  
   if((JSON.parse(localStorage.getItem("calendar_events")) != null && JSON.parse(localStorage.getItem("calendar_events")).length != 0)){
     let localEvents = JSON.parse(localStorage.getItem("calendar_events"));
-    Array.from(localEvents).forEach(event =>{
-      const daySection = document.getElementById(`${parseInt(event.startDate.date.split('-')[2])}`);
-      console.log("horas "+arrayHours.includes(event.startDate.time));
-      console.log("daySection "+daySection.getAttribute("id"));
-      console.log("parseInt"+ parseInt(event.startDate.date.split("-")[2]));
+    localEvents.forEach(event =>{
+      daySection = document.getElementById(`${parseInt(objData.startDate.date.split('-')[2])}`);
+     
       if(!arrayHours.includes(objData.startDate.time) && (daySection.getAttribute("id") == parseInt(objData.startDate.date.split("-")[2]))){
         arrData.push(objData);
         orderLocal(arrData)
-        localStorage.setItem("calendar_events", JSON.stringify(arrData));
-        getEventData();
-        addEventDay(months, arrayHours);
+      localStorage.setItem("calendar_events", JSON.stringify(arrData));
+      getEventData();
+      addEventDay(months, arrayHours);
       }
     });
   }else{
@@ -76,10 +71,6 @@ function saveData() {
   overlay.classList.add('hide');
 
   form.classList.add('hide');
-  console.log(idEvent);
-  // idEvent++;
-  console.log(idEvent);
-  // location.reload()
 }
 
 function addEventDay(monthEvents, array) {
@@ -98,18 +89,11 @@ function addEventDay(monthEvents, array) {
 
 
         if (daySection.hasChildNodes()) {  //si el daySection tiene hijos hacemos una comprobacion de daySection
-          // if (daySection.querySelector('.section__div--span') != null && control == 0) {
-          //   const eventsDay = daySection.querySelector('.section__div--span');
-          //   eventsDay.forEach(e =>{
-          //     daySection.removeChild(eventsDay);
-          //   });
-          //   control = 1;
-          // }
+          
           if (daySection.querySelector('.section__div--span') == null) {  //comprobamos si daySection tiene hijos con la clase section__div--span
             //creamos el hijo en caso de que de null
             const divEvents = document.createElement('div');
             divEvents.setAttribute('class', 'section__div--span');
-            // daySection.appendChild(divEvents);
             
 
             if(divEvents.querySelectorAll('.section__span--span').length == 0){
@@ -137,7 +121,6 @@ function addEventDay(monthEvents, array) {
     });
     control = 0;
   }
-  //we get day's div
 
 }
 
@@ -170,10 +153,6 @@ function getEventData() {
     let counterId = 1;
     let counterIdButton = 1;
     events.forEach((element) => {
-      console.log(events.length)
-
-      if (element.startDate.date.split('-')[2] == date.getDate()) {
-
 
         let eventArticle = document.createElement("article");
         eventArticle.className = "aside__article--Event"
@@ -226,8 +205,6 @@ function getEventData() {
           i++;
         }
         asideEvents.appendChild(eventArticle);
-      }
-      //counterId++;
       counterIdButton++;
     });
 

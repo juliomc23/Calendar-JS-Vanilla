@@ -173,3 +173,9 @@
   padding-left: 1rem;
   border-bottom: 1px solid #CCC;
 }
+
+
+.main__dialog--Event{
+  width: 20rem;
+  height: 20rem;
+}
