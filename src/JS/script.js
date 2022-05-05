@@ -1,6 +1,7 @@
 import { getMonth } from "./getMonth.js";
 import { saveData, clearData, getEventData, addEventDay } from "./saveData.js";
 import { createEventFromDay } from "./modalFromDay.js"
+import {clearAsideEvent} from "./clearAside.js"
 let counter = 1;
 
 getMonth(counter);
@@ -15,7 +16,8 @@ const form = document.getElementById("mainSectionModal");
 const saveDataButton = document.getElementById("button-create--event");
 const cancelDataButton = document.getElementById("button-cancel--event");
 const buttonDayListAddEvent = document.querySelectorAll(".buttonDay");
-
+let deleteButtonEventList = document.querySelectorAll("[data-delete]");
+console.log(deleteButtonEventList);
 overlay.addEventListener("click", closeModal);
 buttonNextMonth.addEventListener("click", switchMonth);
 buttonBackMonth.addEventListener("click", switchMonthBack);
@@ -44,9 +46,18 @@ document.addEventListener("keydown", function (e) {
 });
 
 //Listener to save the form DATA
-document
+// document
+//   .getElementById("button-create--event")
+//   .addEventListener("click", saveData);
+
+  document
   .getElementById("button-create--event")
-  .addEventListener("click", saveData);
+  .addEventListener("click", function(){
+    saveData();
+    deleteButtonEventList = document.querySelectorAll("[data-delete]");
+    console.log(deleteButtonEventList);
+    addListenerButtonDelete();
+  });
 
 //Clear form
 document.getElementById("button-cancel--event").addEventListener("click", clearData);
@@ -58,6 +69,20 @@ Array.from(buttonDayListAddEvent).forEach(element =>{
   })
 });
 
+//Listener for buttonDelete aside Events
+let localEvent = JSON.parse(localStorage.getItem("calendar_events"));
+let idDelete;
+function addListenerButtonDelete(){
+Array.from(deleteButtonEventList).forEach(eButton =>{
+  console.log(deleteButtonEventList);
+  document.getElementById(eButton.getAttribute("id")).addEventListener("click", function(){
+    clearAsideEvent(eButton);
+    deleteButtonEventList = document.querySelectorAll("[data-delete]");
+    addListenerButtonDelete();
+    console.log(deleteButtonEventList);
+  })
+});
+}
 
 //FUNCTIONS
 function createEvent() {
@@ -87,6 +112,11 @@ function switchMonth() {
     });
 
     getMonth(counter);
+    Array.from(buttonDayListAddEvent).forEach(element =>{
+      document.getElementById(element.getAttribute("id")).addEventListener("click",function(){
+        createEventFromDay(element)
+      })
+    });
   } else {
     getMonth(counter);
   }
@@ -102,6 +132,11 @@ function switchMonthBack() {
     });
 
     getMonth(counter);
+    Array.from(buttonDayListAddEvent).forEach(element =>{
+      document.getElementById(element.getAttribute("id")).addEventListener("click",function(){
+        createEventFromDay(element)
+      })
+    });
   } else {
     getMonth(counter);
   }

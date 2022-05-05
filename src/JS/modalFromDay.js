@@ -64,6 +64,7 @@ function createEventFromDay(e){
     const integerCurrentHour = parseInt(fecha.join(':').split('T')[1].split(':')[0])+2;
     const stringCurrentHour = integerCurrentHour.toString();
     startDate.value = `${newDate.join('-')}T${stringCurrentHour}:${stringCurrentMinutes}`;
+    console.log(startDate.value);
     console.log(`${newDate.join('-')}T${stringCurrentHour}:${stringCurrentMinutes}`);
     console.log(`${tabindexDay}/${actualMonth}/${actualYear}`);
     form.classList.remove("hide");
