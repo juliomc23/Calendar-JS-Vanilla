@@ -61,12 +61,15 @@ function createEventFromDay(e){
     fecha.push(day1);
     fecha.push(min);
     const stringCurrentMinutes = fecha.join(':').split('T')[1].split(':')[1];
-    const integerCurrentHour = parseInt(fecha.join(':').split('T')[1].split(':')[0])+2;
+    let integerCurrentHour = parseInt(fecha.join(':').split('T')[1].split(':')[0])+2;
+    if(integerCurrentHour < 10){
+        integerCurrentHour = "0"+integerCurrentHour;
+    }else{
+        integerCurrentHour = integerCurrentHour;
+    }
+
     const stringCurrentHour = integerCurrentHour.toString();
     startDate.value = `${newDate.join('-')}T${stringCurrentHour}:${stringCurrentMinutes}`;
-    console.log(startDate.value);
-    console.log(`${newDate.join('-')}T${stringCurrentHour}:${stringCurrentMinutes}`);
-    console.log(`${tabindexDay}/${actualMonth}/${actualYear}`);
     form.classList.remove("hide");
     overlay.classList.remove("hide");
     // dateInput.setAttribute("value", `${day}/${month}/${year}T00:00`)

@@ -191,11 +191,14 @@ function getEventData() {
           let eventInfo = document.createElement("p");
           switch (i) {
             case 0:
+              const img = document.createElement("img");
+              img.setAttribute("src", "./src/img/4781812_bin_delete_file_garbage_recycle_icon.png");
+              img.setAttribute('class', 'button__img--bin');
               buttonDeleteEvent.setAttribute("class", "article__button--deleteEvent");
               buttonDeleteEvent.setAttribute("data-delete", counterIdButton);//idEvent, element.id
               buttonDeleteEvent.setAttribute("id", idButtonDelete);
               eventArticle.setAttribute("id", "aside__article--Event"+counterIdButton)
-              buttonDeleteEvent.textContent ="+";
+              buttonDeleteEvent.appendChild(img);
               eventInfo.setAttribute("id", "title-aside");
               eventInfo.textContent = eventTitle;
               eventArticle.appendChild(buttonDeleteEvent);
