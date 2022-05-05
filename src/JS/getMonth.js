@@ -5,6 +5,7 @@ let monthEvents = 0;
 const getMonth = (counter) => {
   const gridMonth = document.getElementById("section__div--gridMonth");
   const currentMonth = document.getElementById("currentMonth");
+  const currentYearCalendar = document.getElementById("currentYear");
   let anexMonth = counter -1;
   let day = 1;
   let arrayHours = [];
@@ -87,7 +88,7 @@ const getMonth = (counter) => {
       sectionDay.appendChild(divDay);
       sectionDay.appendChild(buttonEvent);
 
-      if (divDay.textContent == date.getDate() && currentMonth.textContent == month[date.getMonth()]) {
+      if (divDay.textContent == date.getDate() && currentMonth.textContent == month[date.getMonth()] && currentYearCalendar.textContent == date.getFullYear()) {
         divDay.classList.add("section__div--currentDay");
       }
 

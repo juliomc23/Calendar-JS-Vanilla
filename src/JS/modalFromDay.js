@@ -4,6 +4,7 @@ const dateInput = document.getElementById("start-date")
 
 function createEventFromDay(e){
     console.log(e);
+    console.log(document.getElementById("start-date"));
     const startDate = document.querySelector("#start-date");
     const date = new Date();
     const day = date.toISOString();
