@@ -142,7 +142,6 @@
 }
 
 .section__div--gridMonth {
-  border: 1px solid #ccc;
   display: grid;
   row-gap: 0.1rem;
   column-gap: 0.1rem;

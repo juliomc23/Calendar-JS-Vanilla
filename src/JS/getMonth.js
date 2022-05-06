@@ -1,4 +1,5 @@
 import {addEventDay} from './saveData.js';
+import {showDialogDayEvents} from "./showDialog.js"
 let flag = 0;
 let door = 0;
 let monthEvents = 0;
@@ -106,6 +107,11 @@ const getMonth = (counter) => {
     }
   }
   addEventDay(monthEvents, arrayHours);
+  document.querySelectorAll(".section__div--singleDay").forEach(section=>{
+    section.addEventListener("click", function(){
+      showDialogDayEvents(section);
+    })
+})
 };
 
 function getYear(current, last, date){
