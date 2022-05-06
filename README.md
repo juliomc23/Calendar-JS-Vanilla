@@ -23,7 +23,7 @@ This project has been realized by 100% peer coding.
 
 ###### Steps organization
 <img src ="./src/img/calendarStructure.png">
-<img src ="./src/img/modalesarticlesyection.png">
+<img src ="./src/img/modalesarticleysection.png">
 <img src ="./src/img/resumeSectionDay.png">
 <img src ="./src/img/trello.png">
 
