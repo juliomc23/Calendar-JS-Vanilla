@@ -1,7 +1,7 @@
 # JSCalendar
 Project to developing a calendar
 
-# Descripction
+# Description
 
 The project consists of the development of a calendar that must show all the months of the year and be able to store events, as well as delete them, taking into account the title, time, description and type of event.
 
